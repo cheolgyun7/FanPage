@@ -1,7 +1,12 @@
-import "./App.css";
+import Router from "shared/Router";
+import "reset.css";
 
 function App() {
-  return <div>dd</div>;
+  return (
+    <>
+      <Router />
+    </>
+  );
 }
 
 export default App;
