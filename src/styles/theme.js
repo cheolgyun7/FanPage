@@ -2,10 +2,15 @@ import styled from "styled-components";
 
 export const HeaderBox = styled.header`
   position: relative;
-  background-color: #d9d9e7;
+  background-color: #2a1215;
   display: flex;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  color: white;
+`;
+export const FooterBox = styled.article`
+  background-color: red;
 `;
 export const FlexAllbox = styled.div`
   display: flex;
@@ -13,8 +18,14 @@ export const FlexAllbox = styled.div`
 
 export const Article = styled.article`
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
-
+export const Content = styled.div`
+  flex: 1;
+  overflow-y: auto; /* 내용이 넘칠 경우 스크롤 허용 */
+  padding: 5rem;
+`;
 // img.jsx파일
 export const ImgWrapper = styled.div`
   flex: 1;
@@ -25,4 +36,10 @@ export const ImgFile = styled.img`
   width: auto;
   height: 100vh;
   object-fit: cover;
+`;
+
+// Home.jsx파일
+export const SendForm = styled.form`
+  padding: 5rem;
+  background-color: whitesmoke;
 `;

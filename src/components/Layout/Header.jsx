@@ -4,9 +4,8 @@ import { HeaderBox } from "styles/theme";
 const Header = () => {
   return (
     <HeaderBox>
-      <h1>팬 페이지</h1>
+      <p>AESPA FAN PAGE</p>
       <p>NEXT LEVEL</p>
-      <br />
     </HeaderBox>
   );
 };
