@@ -13,7 +13,7 @@ const Home = () => {
   }, []);
 
   const newMessage = (todo) => {
-    // 업데이트된 letterList를 사용하여 localStorage에 저장
+    // 업데이트된 letterList를 사용하여 localStorage에 저장하는거
     const updatedList = [todo, ...letterList];
     setLetterList(updatedList);
     localStorage.setItem("letterList", JSON.stringify(updatedList));
