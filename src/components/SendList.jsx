@@ -1,23 +1,28 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const SendList = ({ letterList, selectMember }) => {
+  const navigate = useNavigate();
   // letterList가 비어있는 경우 스팬 태그 반환
   if (letterList.length === 0) {
     return <span>letterList가 비어 있습니다.</span>;
   }
-  console.log(selectMember);
   const filteredList = selectMember
     ? letterList.filter((item) => item.selectBox === selectMember)
     : letterList;
 
+  const handleDetail = (list) => {
+    console.log(list);
+    navigate(`/detail/${list.id}`, { state: list });
+  };
   return (
     <>
       <CardBox>
         {filteredList.length > 0 ? (
           filteredList.map((list) => {
             return (
-              <Card key={list.id}>
+              <Card onClick={() => handleDetail(list)} key={list.id}>
                 <Nickname>{list.nickname}</Nickname>
                 <CardContext>{list.context}</CardContext>
                 <SelectBox>{list.selectBox}</SelectBox>
@@ -25,7 +30,7 @@ const SendList = ({ letterList, selectMember }) => {
             );
           })
         ) : (
-          <span>df</span>
+          <span>등록된 팬 레터가 없습니다. 등록해주세요</span>
         )}
       </CardBox>
     </>
@@ -37,6 +42,10 @@ export const CardBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   background-color: #2a1215;
+  > span {
+    color: white;
+    padding: 2rem;
+  }
 `;
 export const Card = styled.section`
   width: 28%;
