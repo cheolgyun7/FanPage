@@ -22,7 +22,14 @@ const SendPage = ({ newMessage }) => {
       <SendForm onSubmit={formSubmit}>
         <Section>
           <Label>닉네임 : </Label>
-          <input type="text" name="nickname" />
+          <input
+            type="text"
+            name="nickname"
+            style={{
+              width: "50%",
+              padding: "0.5rem",
+            }}
+          />
         </Section>
         <Section>
           <Label>내용 : </Label>
@@ -55,6 +62,8 @@ export const Label = styled.label`
   align-items: center;
 `;
 export const Textarea = styled.textarea`
+  padding: 0.5rem;
+  width: 50%;
   height: 6rem;
   resize: none;
 `;

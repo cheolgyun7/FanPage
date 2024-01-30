@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Content } from "styles/theme";
 import SendPage from "./SendPage";
 import SendList from "./SendList";
+import MemberList from "./MemberList";
 
 const Home = () => {
   const [letterList, setLetterList] = useState([]);
+  const [selectMember, setSelectMember] = useState("");
+  const handleSelectedMember = (memberName) => {
+    setSelectMember(memberName);
+  };
   useEffect(() => {
     const list = JSON.parse(localStorage.getItem("letterList"));
     if (list) {
@@ -13,7 +18,7 @@ const Home = () => {
   }, []);
 
   const newMessage = (todo) => {
-    // 업데이트된 letterList를 사용하여 localStorage에 저장하는거
+    // 업데이트된 letterList를 사용하여 localStorage에 저장
     const updatedList = [todo, ...letterList];
     setLetterList(updatedList);
     localStorage.setItem("letterList", JSON.stringify(updatedList));
@@ -21,8 +26,12 @@ const Home = () => {
 
   return (
     <Content>
+      <MemberList
+        selectMember={selectMember}
+        handleSelectedMember={handleSelectedMember}
+      />
       <SendPage newMessage={newMessage} />
-      <SendList letterList={letterList} />
+      <SendList selectMember={selectMember} letterList={letterList} />
     </Content>
   );
 };
