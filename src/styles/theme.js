@@ -29,6 +29,7 @@ export const Content = styled.div`
   overflow-y: auto; /* 내용이 넘칠 경우 스크롤 허용 */
   padding: 1rem;
 `;
+
 // img.jsx파일
 export const ImgWrapper = styled.div`
   flex: 1;

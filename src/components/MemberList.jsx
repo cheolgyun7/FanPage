@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
+const members = ["", "Karina", "Winter", "Giselle", "Ningning"];
 const MemberList = ({ handleSelectedMember }) => {
+  const [selectedMember, setSelectedMember] = useState("");
+
   const handleMemberClick = (memberName) => {
+    setSelectedMember(memberName);
     handleSelectedMember(memberName);
   };
+
   return (
     <div>
       <ListUl>
-        <ListLi onClick={() => handleMemberClick("")}>All</ListLi>
-        <ListLi onClick={() => handleMemberClick("카리나")}>카리나</ListLi>
-        <ListLi onClick={() => handleMemberClick("윈터")}>윈터</ListLi>
-        <ListLi onClick={() => handleMemberClick("지젤")}>지젤</ListLi>
-        <ListLi onClick={() => handleMemberClick("닝닝")}>닝닝</ListLi>
+        {members.map((member) => (
+          <ListLi
+            key={member}
+            onClick={() => handleMemberClick(member)}
+            className={selectedMember === member ? "selected" : ""}
+          >
+            {member || "All"}
+          </ListLi>
+        ))}
       </ListUl>
     </div>
   );
@@ -29,4 +38,10 @@ export const ListLi = styled.li`
   text-align: center;
   padding: 10px 0;
   cursor: pointer;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+  &.selected {
+    background-color: #ccc;
+  }
 `;

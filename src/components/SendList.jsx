@@ -13,7 +13,6 @@ const SendList = ({ letterList, selectMember }) => {
     : letterList;
 
   const handleDetail = (list) => {
-    console.log(list);
     navigate(`/detail/${list.id}`, { state: list });
   };
   return (
@@ -23,9 +22,21 @@ const SendList = ({ letterList, selectMember }) => {
           filteredList.map((list) => {
             return (
               <Card onClick={() => handleDetail(list)} key={list.id}>
-                <Nickname>{list.nickname}</Nickname>
-                <CardContext>{list.context}</CardContext>
-                <SelectBox>{list.selectBox}</SelectBox>
+                <Nickname>{`닉네임 : ${list.nickname}`}</Nickname>
+                <CardContext>{`내용 : ${list.context}`}</CardContext>
+                <CardDate>
+                  {`등록시간 : ${new Date(list.createdAt).toLocaleDateString(
+                    "ko",
+                    {
+                      year: "2-digit",
+                      month: "2-digit",
+                      day: "2-digit",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    }
+                  )}`}
+                </CardDate>
+                <SelectBox>{`수신인: ${list.selectBox}`}</SelectBox>
               </Card>
             );
           })
@@ -55,6 +66,7 @@ export const Card = styled.section`
   border-radius: 1rem;
   color: white;
   cursor: pointer;
+  text-align: center;
   &:hover {
     transition: all 0.4s;
     transform: scale(1.1);
@@ -62,16 +74,14 @@ export const Card = styled.section`
   }
 `;
 
-export const Nickname = styled.h4`
-  text-align: center;
-`;
+export const Nickname = styled.h4``;
 
 export const CardContext = styled.p`
   margin: 1rem 0;
-  border: 1px solid black;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
 
 export const SelectBox = styled.span``;
+export const CardDate = styled.div``;

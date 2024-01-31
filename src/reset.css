@@ -18,7 +18,7 @@ address,
   margin: 0;
   padding: 0;
 }
-
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap");
 li {
   list-style: none;
 }

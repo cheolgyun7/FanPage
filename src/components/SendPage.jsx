@@ -8,12 +8,29 @@ const SendPage = ({ newMessage }) => {
     const nickname = e.target.nickname.value;
     const context = e.target.context.value;
     const selectBox = e.target.select.value;
+    if (!nickname && !context && !selectBox) {
+      alert("닉네임을 입력하세요");
+      return;
+    }
+    if (!nickname) {
+      alert("닉네임을 입력하세요");
+      return;
+    }
+    if (!context) {
+      alert("내용을 입력하세요");
+      return;
+    }
+    if (!selectBox) {
+      alert("수신인을 선택하세요");
+      return;
+    }
 
     newMessage({
       id: crypto.randomUUID(),
       nickname,
       context,
       selectBox,
+      createdAt: new Date(),
     });
     e.target.reset();
   };
@@ -38,10 +55,11 @@ const SendPage = ({ newMessage }) => {
         <Section>
           <Label>수신인 : </Label>
           <select name="select">
-            <option value="카리나">카리나</option>
-            <option value="윈터">윈터</option>
-            <option value="지젤">지젤</option>
-            <option value="닝닝">닝닝</option>
+            <option value="">선택</option>
+            <option value="Karina">카리나</option>
+            <option value="Winter">윈터</option>
+            <option value="Giselle">지젤</option>
+            <option value="Ningning">닝닝</option>
           </select>
           <button type="submit">보내기</button>
         </Section>
