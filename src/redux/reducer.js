@@ -1,10 +1,10 @@
 import { ADD_LETTER, SELECT_MEMBER, NEW_MESSAGE } from "./action";
 
 const initialState = {
-  letterList: [],
+  letterList: JSON.parse(localStorage.getItem("letterList")),
   selectedMember: "",
 };
-
+console.log(initialState);
 const letterReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_LETTER:

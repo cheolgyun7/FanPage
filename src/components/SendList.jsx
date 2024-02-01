@@ -9,6 +9,7 @@ const SendList = () => {
 
   const letterList = useSelector((state) => state.letterList);
   const selectedMember = useSelector((state) => state.selectedMember);
+  console.log(letterList);
 
   if (letterList.length === 0) {
     return <span>letterList가 비어 있습니다.</span>;
