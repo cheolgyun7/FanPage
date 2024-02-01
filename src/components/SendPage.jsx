@@ -1,10 +1,11 @@
 import React from "react";
 import { SendForm } from "styles/theme";
 import styled from "styled-components";
-import { useLetterContext } from "context/Context";
+import { useDispatch } from "react-redux";
+import { newMessage } from "../redux/action";
 
 const SendPage = () => {
-  const { newMessage } = useLetterContext();
+  const dispatch = useDispatch();
   const formSubmit = (e) => {
     e.preventDefault();
     const nickname = e.target.nickname.value;
@@ -26,14 +27,15 @@ const SendPage = () => {
       alert("수신인을 선택하세요");
       return;
     }
-
-    newMessage({
-      id: crypto.randomUUID(),
-      nickname,
-      context,
-      selectBox,
-      createdAt: new Date(),
-    });
+    dispatch(
+      newMessage({
+        id: crypto.randomUUID(),
+        nickname,
+        context,
+        selectBox,
+        createdAt: new Date(),
+      })
+    );
     e.target.reset();
   };
   return (

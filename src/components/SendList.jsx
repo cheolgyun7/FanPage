@@ -1,28 +1,34 @@
-import { useLetterContext } from "context/Context";
+// import { useLetterContext } from "context/Context";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { addLetter } from "../redux/action";
+import { useSelector } from "react-redux";
 
 const SendList = () => {
   const navigate = useNavigate();
+  const letterList = useSelector((state) => state.letterList);
+  console.log("123");
+  console.log(letterList);
+  console.log(addLetter);
   // letterList가 비어있는 경우 스팬 태그 반환
 
-  const { letterList, setselectedMember } = useLetterContext();
+  // const { letterList, setselectedMember } = useLetterContext();
 
-  if (letterList.length === 0) {
-    return <span>letterList가 비어 있습니다.</span>;
-  }
-  const filteredList = setselectedMember
-    ? letterList.filter((item) => item.selectBox === setselectedMember)
-    : letterList;
+  // if (letterList.length === 0) {
+  //   return <span>letterList가 비어 있습니다.</span>;
+  // }
+  // const filteredList = setselectedMember
+  //   ? letterList.filter((item) => item.selectBox === setselectedMember)
+  //   : letterList;
 
-  const handleDetail = (list) => {
-    navigate(`/detail/${list.id}`, { state: list });
-  };
+  // const handleDetail = (list) => {
+  //   navigate(`/detail/${list.id}`, { state: list });
+  // };
   return (
     <>
       <CardBox>
-        {filteredList.length > 0 ? (
+        {/* {filteredList.length > 0 ? (
           filteredList.map((list) => {
             return (
               <Card onClick={() => handleDetail(list)} key={list.id}>
@@ -46,7 +52,7 @@ const SendList = () => {
           })
         ) : (
           <span>등록된 팬 레터가 없습니다. 등록해주세요</span>
-        )}
+        )} */}
       </CardBox>
     </>
   );

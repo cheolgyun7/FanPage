@@ -1,13 +1,15 @@
-import { useLetterContext } from "context/Context";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { handleMember } from "../redux/action";
 
 const members = ["", "Karina", "Winter", "Giselle", "Ningning"];
 const MemberList = () => {
-  const { setselectedMember, handleMember } = useLetterContext();
+  const selectedMember = useSelector((state) => state.selectedMember);
+  const dispatch = useDispatch();
 
   const handleMemberClick = (memberName) => {
-    handleMember(memberName);
+    dispatch(handleMember(memberName));
   };
 
   return (
@@ -17,7 +19,7 @@ const MemberList = () => {
           <ListLi
             key={member}
             onClick={() => handleMemberClick(member)}
-            className={setselectedMember === member ? "selected" : ""}
+            className={selectedMember === member ? "selected" : ""}
           >
             {member || "All"}
           </ListLi>
