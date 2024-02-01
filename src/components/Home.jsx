@@ -26,10 +26,7 @@ const Home = () => {
 
   return (
     <Content>
-      <MemberList
-        selectMember={selectMember}
-        handleSelectedMember={handleSelectedMember}
-      />
+      <MemberList handleSelectedMember={handleSelectedMember} />
       <SendPage newMessage={newMessage} />
       <SendList selectMember={selectMember} letterList={letterList} />
     </Content>
