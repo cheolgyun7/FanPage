@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import { useLetterContext } from "context/Context";
+import React from "react";
 import styled from "styled-components";
 
 const members = ["", "Karina", "Winter", "Giselle", "Ningning"];
-const MemberList = ({ handleSelectedMember }) => {
-  const [selectedMember, setSelectedMember] = useState("");
+const MemberList = () => {
+  const { setselectedMember, handleMember } = useLetterContext();
 
   const handleMemberClick = (memberName) => {
-    setSelectedMember(memberName);
-    handleSelectedMember(memberName);
+    handleMember(memberName);
   };
 
   return (
@@ -17,7 +17,7 @@ const MemberList = ({ handleSelectedMember }) => {
           <ListLi
             key={member}
             onClick={() => handleMemberClick(member)}
-            className={selectedMember === member ? "selected" : ""}
+            className={setselectedMember === member ? "selected" : ""}
           >
             {member || "All"}
           </ListLi>

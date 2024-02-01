@@ -1,8 +1,10 @@
 import React from "react";
 import { SendForm } from "styles/theme";
 import styled from "styled-components";
+import { useLetterContext } from "context/Context";
 
-const SendPage = ({ newMessage }) => {
+const SendPage = () => {
+  const { newMessage } = useLetterContext();
   const formSubmit = (e) => {
     e.preventDefault();
     const nickname = e.target.nickname.value;

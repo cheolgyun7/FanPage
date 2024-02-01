@@ -1,15 +1,19 @@
+import { useLetterContext } from "context/Context";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const SendList = ({ letterList, selectMember }) => {
+const SendList = () => {
   const navigate = useNavigate();
   // letterList가 비어있는 경우 스팬 태그 반환
+
+  const { letterList, setselectedMember } = useLetterContext();
+
   if (letterList.length === 0) {
     return <span>letterList가 비어 있습니다.</span>;
   }
-  const filteredList = selectMember
-    ? letterList.filter((item) => item.selectBox === selectMember)
+  const filteredList = setselectedMember
+    ? letterList.filter((item) => item.selectBox === setselectedMember)
     : letterList;
 
   const handleDetail = (list) => {
