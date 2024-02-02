@@ -1,4 +1,4 @@
-import { useLetterContext } from "context/Context";
+import { LetterProvider, useLetterContext } from "context/Context";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -21,33 +21,35 @@ const SendList = () => {
   };
   return (
     <>
-      <CardBox>
-        {filteredList.length > 0 ? (
-          filteredList.map((list) => {
-            return (
-              <Card onClick={() => handleDetail(list)} key={list.id}>
-                <Nickname>{`닉네임 : ${list.nickname}`}</Nickname>
-                <CardContext>{`내용 : ${list.context}`}</CardContext>
-                <CardDate>
-                  {`등록시간 : ${new Date(list.createdAt).toLocaleDateString(
-                    "ko",
-                    {
-                      year: "2-digit",
-                      month: "2-digit",
-                      day: "2-digit",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    }
-                  )}`}
-                </CardDate>
-                <SelectBox>{`수신인: ${list.selectBox}`}</SelectBox>
-              </Card>
-            );
-          })
-        ) : (
-          <span>등록된 팬 레터가 없습니다. 등록해주세요</span>
-        )}
-      </CardBox>
+      <LetterProvider.Consumer>
+        <CardBox>
+          {filteredList.length > 0 ? (
+            filteredList.map((list) => {
+              return (
+                <Card onClick={() => handleDetail(list)} key={list.id}>
+                  <Nickname>{`닉네임 : ${list.nickname}`}</Nickname>
+                  <CardContext>{`내용 : ${list.context}`}</CardContext>
+                  <CardDate>
+                    {`등록시간 : ${new Date(list.createdAt).toLocaleDateString(
+                      "ko",
+                      {
+                        year: "2-digit",
+                        month: "2-digit",
+                        day: "2-digit",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      }
+                    )}`}
+                  </CardDate>
+                  <SelectBox>{`수신인: ${list.selectBox}`}</SelectBox>
+                </Card>
+              );
+            })
+          ) : (
+            <span>등록된 팬 레터가 없습니다. 등록해주세요</span>
+          )}
+        </CardBox>
+      </LetterProvider.Consumer>
     </>
   );
 };
