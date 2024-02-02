@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { selectMember } from "../redux/action";
 import styled from "styled-components";
-import { handleMember } from "../redux/action";
 
 const members = ["", "Karina", "Winter", "Giselle", "Ningning"];
 const MemberList = () => {
@@ -9,9 +9,8 @@ const MemberList = () => {
   const dispatch = useDispatch();
 
   const handleMemberClick = (memberName) => {
-    dispatch(handleMember(memberName));
+    dispatch(selectMember(memberName));
   };
-
   return (
     <div>
       <ListUl>
