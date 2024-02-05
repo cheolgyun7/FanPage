@@ -9,7 +9,7 @@ const SendList = () => {
 
   const letterList = useSelector((state) => state.letterList);
   const selectedMember = useSelector((state) => state.selectedMember);
-
+  //선택된멤버를 조건문으로
   if (letterList.length === 0) {
     return <span>letterList가 비어 있습니다.</span>;
   }
